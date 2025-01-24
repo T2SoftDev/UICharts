@@ -1964,6 +1964,8 @@ open class BarLineChartViewBase: ChartViewBase, BarLineScatterCandleBubbleChartD
         
         getTransformer(forAxis: .left).pixelToValues(&pt)
 
-        return min(xAxis._axisMaximum, Double(pt.x))
+        // we need to be able to get x which is not in data set's entries array
+        // so this is real calculated max visible x now
+        return Double(pt.x) // min(xAxis._axisMaximum, Double(pt.x))
     }
 }
